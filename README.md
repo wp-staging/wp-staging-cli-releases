@@ -70,6 +70,7 @@ wpstg-extractor <backupfile.wpstg> [options]
 - `<backupfile.wpstg>`: Path to the WP Staging Pro backup file that will be processed. This argument is mandatory.
 
 ### Options
+```
   -l,  --license=<licensekey>   - WP Staging Pro License Key. Required for accessing the backup file.
   -o,  --outputdir=<directory>  - Specify the output directory where processed files will be stored.
                                   Default "./wpstgbackup" will be used.
@@ -92,6 +93,7 @@ wpstg-extractor <backupfile.wpstg> [options]
   -ol, --only-languages         - Extract the contents of the 'languages' directory within 'wp-content'.
   -od, --only-dbfile            - Extract the database file from the specified location.
   -of, --only-file=<string>     - Extract the contents of files matching the specified string.
+```
 
 ### Examples
 
