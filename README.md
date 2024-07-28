@@ -70,16 +70,35 @@ wpstg-extractor <backupfile.wpstg> [options]
 - `<backupfile.wpstg>`: Path to the WP Staging Pro backup file that will be processed. This argument is mandatory.
 
 ### Options
-- `--license=<licensekey>`: WP Staging Pro License Key. Required for accessing the backup file.
-- `--outputdir=<directory>`: Specify the output directory where processed files will be stored. The default is output.
-- `--normalizedb`: Perform database file normalization.
-- `--dbprefix=<dbprefix>`: Specify a new DB prefix to use during the normalization process.
-- `--siteurl=<siteurl>`: Specify a new Site URL to use during DB normalization.
-- `--dump-metadata`: Dump metadata from the backup file.
-- `--dump-index`: Dump index information from the backup file.
-- `--dump-header`: Dump header information from the backup file.
+  -l,  --license=<licensekey>   - WP Staging Pro License Key. Required for accessing the backup file.
+  -o,  --outputdir=<directory>  - Specify the output directory where processed files will be stored.
+                                  Default "./wpstgbackup" will be used.
+  -s,  --slowdown-cpu           - Slow down CPU usage during the iteration process.
+  -q,  --quiet                  - Do not show the extracted list.
+
+  -n,  --normalizedb            - Perform database file normalization.
+  -dp, --dbprefix=<dbprefix>    - Specify a new DB prefix to use with `--normalizedb`.
+  -su, --siteurl=<siteurl>      - Specify a new Site URL to use with `--normalizedb`.
+
+  -dm, --dump-metadata          - Display backup metadata from the backup file.
+  -di, --dump-index             - Display backup index information from the backup file.
+  -dh, --dump-header            - Display backup header information from the backup file.
+
+  -or, --only-rootpath          - Extract the contents of the root path directory.
+  -ow, --only-wpcontent         - Extract the contents of the 'wp-content' directory.
+  -op, --only-plugins           - Extract the contents of the 'plugins' directory within 'wp-content'.
+  -ot, --only-themes            - Extract the contents of the 'themes' directory within 'wp-content'.
+  -om, --only-muplugins         - Extract the contents of the 'mu-plugins' directory within 'wp-content'.
+  -ol, --only-languages         - Extract the contents of the 'languages' directory within 'wp-content'.
+  -od, --only-dbfile            - Extract the database file from the specified location.
+  -of, --only-file=<string>     - Extract the contents of files matching the specified string.
 
 ### Examples
+
+```
+  wpstg-extractor backup.wpstg --license=WPSTGPRO_LICENSE_KEY --outputdir=./wpstgbackup
+  wpstg-extractor backup.wpstg --license=WPSTGPRO_LICENSE_KEY --normalizedb --dbprefix=newprefix --siteurl=https://example.com
+```
 
 ```
 wpstg-extractor backup.wpstg --license=WPSTGPRO_LICENSE_KEY
