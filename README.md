@@ -13,49 +13,16 @@ This repo contains binary executables that can be used on WinOS, Linux and Mac O
 
 ## Installation
 
-To use `wpstg-extractor`, you may download a pre-built binary from the [releases page](https://github.com/wp-staging/wpstg-extractor/releases) or build it from source if you have Go installed.
+To use `wpstg-extractor`, you may download a pre-built binary from the [build folder]([https://github.com/wp-staging/wpstg-extractor/releases](https://github.com/wp-staging/wpstg-extractor-releases/tree/main/build))
 
 ### Download Pre-Built Binary
 
 1. Visit the [releases page](https://github.com/wp-staging/wpstg-extractor/releases).
 2. Download the appropriate binary for your operating system.
-3. Move the `wpstg-extractor` binary to a directory in your `PATH` for easy access:
+3. Optional: Move the `wpstg-extractor` binary to a directory in your `PATH` for easy access, e.g. for Linux:
 
 ```
 mv wpstg-extractor /usr/local/bin/
-```
-
-### Build from Source
-
-Clone the repository and build the binary:
-
-```
-git clone https://github.com/wp-staging/wpstg-extractor.git
-cd wpstg-extractor
-make build
-```
-
-Move the wpstg-extractor binary to a directory in your PATH for easy access:
-
-```
-mv ./build/linux_amd64/wpstg-extractor /usr/local/bin/
-```
-
-`make build` will build all the targeted architectures. To create a single one for your OS:
-```
-go build
-```
-
-To reduce the binary size:
-
-```
-go build -ldflags="-s -w"
-```
-
-Move the wpstg-extractor binary to a directory in your PATH for easy access:
-
-```
-mv ./wpstg-extractor /usr/local/bin/
 ```
 
 ## Usage
@@ -136,9 +103,6 @@ We welcome contributions to wpstg-extractor! If you have suggestions, bug report
 2. Create a new branch for your feature or bug fix.
 3. Make your changes and test them.
 4. Submit a pull request with a description of your changes.
-
-## License
-This project is licensed under the [Proprietary Software License Agreement](./LICENSE.md).
 
 ## Acknowledgements
 - [WP Staging Pro](https://wp-staging.com/) The Best WordPress Backup and Migration Plugin
