@@ -98,11 +98,6 @@ wpstg-extractor <backupfile.wpstg> [options]
 ### Examples
 
 ```
-  wpstg-extractor backup.wpstg --license=WPSTGPRO_LICENSE_KEY --outputdir=./wpstgbackup
-  wpstg-extractor backup.wpstg --license=WPSTGPRO_LICENSE_KEY --normalizedb --dbprefix=newprefix --siteurl=https://example.com
-```
-
-```
 wpstg-extractor backup.wpstg --license=WPSTGPRO_LICENSE_KEY
 ```
 
