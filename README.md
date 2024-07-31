@@ -16,12 +16,10 @@ This repo contains binary executables that can be used on WinOS, Linux and Mac O
 
 ## Installation
 
-To use `wpstg-extractor`, you may download a pre-built binary from the [build folder]([https://github.com/wp-staging/wpstg-extractor/releases](https://github.com/wp-staging/wpstg-extractor-releases/tree/main/build))
-
 ### Download Pre-Built Binary
 
-1. Visit the [releases page](https://github.com/wp-staging/wpstg-extractor/releases).
-2. Download the appropriate binary for your operating system.
+1. Download executables for all major operating systems from [here](https://github.com/wp-staging/wpstg-extractor-releases/archive/refs/heads/main.zip).
+2. Extract the zip and get the appropriate binary for your operating system from the `build` folder.
 3. Optional: Move the `wpstg-extractor` binary to a directory in your `PATH` for easy access, e.g. for Linux:
 
 ```
