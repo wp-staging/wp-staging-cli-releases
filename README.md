@@ -9,7 +9,7 @@ This repo contains binary executables that can be used on WinOS, Linux and Mac O
 
 ## Features
 
-- **Extract Backup Files**: Access the contents of `.wpstg` backup files.
+- **Extract Backup Files and Database**: Access the contents of `.wpstg` backup files.
 - **Database Normalization**: Perform normalization on the database files within the backup.
 - **Metadata Dumping**: Extract metadata from the backup file.
 - **Index and Header Dumping**: Retrieve index and header information from the backup file.
