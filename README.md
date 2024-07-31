@@ -4,7 +4,7 @@ The **wpstg-extractor** is a high-performance command-line tool for processing W
 
 This repo contains binary executables that can be used on WinOS, Linux and Mac OS to extract WP Staging backup files. (Requires a valid and active [WP Staging Pro](https://wp-staging.com) license.)
 
-Benchmarks: 
+**Benchmarks:** 
 - Extracting a 20GB backup in under 36s on a AMD Ryzen™ 7 PRO 7840U and fast SSD.
 
 ## Features
