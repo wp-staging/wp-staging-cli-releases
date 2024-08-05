@@ -31,11 +31,11 @@ mv wpstg-extractor /usr/local/bin/
 To run wpstg-extractor, use the following command:
 
 ```
-wpstg-extractor <backupfile.wpstg> [options]
+wpstg-extractor [options] <backupfile.wpstg>
 ```
 
 ### Arguments
-- `<backupfile.wpstg>`: Path to the WP Staging Pro backup file that will be processed. This argument is mandatory.
+- `<backupfile.wpstg>  - Path to the WP Staging backup file that will be processed. This argument is mandatory.`
 
 ### Options
 ```
@@ -66,34 +66,27 @@ wpstg-extractor <backupfile.wpstg> [options]
 ### Examples
 
 ```
-wpstg-extractor backup.wpstg --license=WPSTGPRO_LICENSE_KEY
+wpstg-extractor --license=WPSTGPRO_LICENSE --outputdir=./wpstgbackup backup.wpstg
+wpstg-extractor --license=WPSTGPRO_LICENSE --normalizedb --dbprefix=newprefix --siteurl=https://example.com backup.wpstg
 ```
 
-```
-wpstg-extractor backup.wpstg --license=WPSTGPRO_LICENSE_KEY --outputdir=/tmp/wpstgbackup
-```
+With short options:
 
 ```
-wpstg-extractor backup.wpstg --license=WPSTGPRO_LICENSE_KEY --dump-metadata
-```
-
-```
-wpstg-extractor backup.wpstg --license=WPSTGPRO_LICENSE_KEY --dump-index
-```
-
-```
-wpstg-extractor backup.wpstg --license=WPSTGPRO_LICENSE_KEY --dump-header
-```
-
-```
-wpstg-extractor backup.wpstg --license=WPSTGPRO_LICENSE_KEY \
---normalizedb --dbprefix=newprefix --siteurl=https://example.com
+wpstg-extractor -l WPSTGPRO_LICENSE -o ./wpstgbackup backup.wpstg
+wpstg-extractor -l WPSTGPRO_LICENSE -n -dp newprefix -su https://example.com backup.wpstg
 ```
 
 You may add the license key by using environment variable:
 
 ```
 export WPSTGPRO_LICENSE=WPSTGPRO_LICENSE_KEY
+```
+
+At Windows OS command prompt
+
+```
+set WPSTGPRO_LICENSE=WPSTGPRO_LICENSE_KEY
 ```
 
 ## Contributing
