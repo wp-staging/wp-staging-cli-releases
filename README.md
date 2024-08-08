@@ -1,6 +1,6 @@
-# wpstg-extractor
+# wp-staging-cli
 
-The **wpstg-extractor** is a high-performance command-line tool for processing WP Staging Pro backup files. This tool allows you to extract, normalize, and inspect the contents of `.wpstg` backup files created by the WP Staging Pro plugin.
+**wp-staging-cli** is a high-performance command-line tool for processing WP Staging Pro backup files. This tool allows you to extract, normalize, and inspect the contents of `.wpstg` backup files created by the WP Staging Pro plugin.
 
 This repo contains binary executables that can be used on WinOS, Linux and Mac OS to extract WP Staging backup files. (Requires a valid and active [WP Staging Agency or Developer plan](https://wp-staging.com).)
 
@@ -18,20 +18,20 @@ This repo contains binary executables that can be used on WinOS, Linux and Mac O
 
 ### Download Pre-Built Binary
 
-1. Download executables for all major operating systems from [here](https://github.com/wp-staging/wpstg-extractor-releases/archive/refs/heads/main.zip).
+1. Download executables for all major operating systems from [here](https://github.com/wp-staging/wp-staging-cli-releases/archive/refs/heads/main.zip).
 2. Extract the zip and get the appropriate binary for your operating system from the `build` folder.
-3. Optional: Move the `wpstg-extractor` binary to a directory in your `PATH` for easy access, e.g. for Linux:
+3. Optional: Move the `wp-staging-cli` binary to a directory in your `PATH` for easy access, e.g. for Linux:
 
 ```
-mv wpstg-extractor /usr/local/bin/
+mv wp-staging-cli /usr/local/bin/
 ```
 
 ## Usage
 
-To run wpstg-extractor, use the following command:
+To run wp-staging-cli, use the following command:
 
 ```
-wpstg-extractor [options] <backupfile.wpstg>
+wp-staging-cli [options] <backupfile.wpstg>
 ```
 
 ### Arguments
@@ -66,15 +66,15 @@ wpstg-extractor [options] <backupfile.wpstg>
 ### Examples
 
 ```
-wpstg-extractor --license=WPSTGPRO_LICENSE --outputdir=./wpstgbackup backup.wpstg
-wpstg-extractor --license=WPSTGPRO_LICENSE --normalizedb --dbprefix=newprefix --siteurl=https://example.com backup.wpstg
+wp-staging-cli --license=WPSTGPRO_LICENSE --outputdir=./wpstgbackup backup.wpstg
+wp-staging-cli --license=WPSTGPRO_LICENSE --normalizedb --dbprefix=newprefix --siteurl=https://example.com backup.wpstg
 ```
 
 With short options:
 
 ```
-wpstg-extractor -l WPSTGPRO_LICENSE -o ./wpstgbackup backup.wpstg
-wpstg-extractor -l WPSTGPRO_LICENSE -n -dp newprefix -su https://example.com backup.wpstg
+wp-staging-cli -l WPSTGPRO_LICENSE -o ./wpstgbackup backup.wpstg
+wp-staging-cli -l WPSTGPRO_LICENSE -n -dp newprefix -su https://example.com backup.wpstg
 ```
 
 You may add the license key by using environment variable:
@@ -103,5 +103,5 @@ We welcome contributions to wpstg-extractor! If you have suggestions, bug report
 - [Go Programming Language](https://go.dev/) The core language for this tool.
 
 ## Contact
-For support or questions, please open an issue on the [GitHub repository](https://github.com/wp-staging/wpstg-extractor).
+For support or questions, please open an issue on the [GitHub repository](https://github.com/wp-staging/wp-staging-cli).
 
