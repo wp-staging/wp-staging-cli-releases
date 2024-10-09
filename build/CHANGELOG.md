@@ -1,4 +1,4 @@
-## v1.0.4
+## v1.1.0
 
 - Add restore command.
 - Add option to exclude files from extraction and restoration.
