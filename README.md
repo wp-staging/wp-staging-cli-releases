@@ -39,28 +39,82 @@ wp-staging-cli [options] <backupfile.wpstg>
 
 ### Options
 ```
-  -l,  --license=<licensekey>   - WP Staging Pro License Key. Required for accessing the backup file.
-  -o,  --outputdir=<directory>  - Specify the output directory where processed files will be stored.
-                                  Default "./wpstgbackup" will be used.
-  -s,  --slowdown-cpu           - Slow down CPU usage during the iteration process.
-  -q,  --quiet                  - Do not show the extracted list.
+Commands:
+  extract - Extract items from the backup. Default if no command is specified.
+  restore - Restore the backup file.
 
-  -n,  --normalizedb            - Perform database file normalization.
-  -dp, --dbprefix=<dbprefix>    - Specify a new DB prefix to use with `--normalizedb`.
-  -su, --siteurl=<siteurl>      - Specify a new Site URL to use with `--normalizedb`.
+Arguments:
+  backupfile.wpstg  - Path to the WP Staging backup file that will be processed. This argument is mandatory.
 
-  -dm, --dump-metadata          - Display backup metadata from the backup file.
-  -di, --dump-index             - Display backup index information from the backup file.
-  -dh, --dump-header            - Display backup header information from the backup file.
+General Options:
+  -l,  --license=<licensekey>       - WP Staging Pro License Key. Required to access the backup file.
+                                      Alternatively, use the `WPSTGPRO_LICENSE` environment variable.
 
-  -or, --only-rootpath          - Extract the contents of the root path directory.
-  -ow, --only-wpcontent         - Extract the contents of the 'wp-content' directory.
-  -op, --only-plugins           - Extract the contents of the 'plugins' directory within 'wp-content'.
-  -ot, --only-themes            - Extract the contents of the 'themes' directory within 'wp-content'.
-  -om, --only-muplugins         - Extract the contents of the 'mu-plugins' directory within 'wp-content'.
-  -ol, --only-languages         - Extract the contents of the 'languages' directory within 'wp-content'.
-  -od, --only-dbfile            - Extract the database file from the specified location.
-  -of, --only-file=<string>     - Extract the contents of files matching the specified string.
+  -o,  --outputdir=<path>           - Specify the working directory path where processed files will be stored.
+                                      The "wpstg-cli" will be appended to the specified path. Default: "./wpstg-cli".
+
+  -e,  --extractdir=<string>        - Specify the name of the extraction directory. Default: "extract".
+  -s,  --skip-confirm               - Skip confirmation prompt.
+  -w,  --overwrite=<yes|no>         - Overwrite the target directory during `extract` and `restore` operations. Default: "yes".
+  -v,  --version                    - Display version information and exit.
+  -h,  --help=<all>                 - Display this help message and exit. Use 'all' to show additional help.
+  -q,  --quiet                      - Suppress output of processed backup items.
+  -d,  --debug                      - Display debug message.
+       --slowdown-cpu               - Reduce CPU usage during the iteration process.
+       --skip-extract               - Use existing extracted files during the `restore` process.
+
+  -n,  --normalizedb                - Normalize database files during the `extract` process.
+                                      This will replace all WP Staging specific placeholders and allows the sql file to be imported by
+                                      any regular db admin tool.
+       --siteurl=<siteurl>          - Specify a new Site URL.
+       --dbprefix=<dbprefix>        - Specify a new database prefix.
+
+  -or, --only-wproot                - Process only the 'wp root' item in the backup.
+  -ow, --only-wpcontent             - Process only the 'wp-content' item in the backup.
+  -op, --only-plugins               - Process only the 'plugins' item in the backup.
+  -ot, --only-themes                - Process only the 'themes' item in the backup.
+  -om, --only-muplugins             - Process only the 'mu-plugins' item in the backup.
+  -ou, --only-uploads               - Process only the 'uploads' item in the backup.
+  -ol, --only-languages             - Process only the 'languages' item in the backup.
+  -od, --only-dbfile                - Process only the database file in the backup.
+  -oe, --only-dropins               - Process only the dropins file in the backup.
+  -of, --only-file=<string>         - Process only items that match the specified string.
+
+  -sr, --skip-wproot                - Skip processing the 'wp root' item in the backup.
+  -sw, --skip-wpcontent             - Skip processing the 'wp-content' item in the backup.
+  -sp, --skip-plugins               - Skip processing the 'plugins' item in the backup.
+  -st, --skip-themes                - Skip processing the 'themes' item in the backup.
+  -sm, --skip-muplugins             - Skip processing the 'mu-plugins' item in the backup.
+  -su, --skip-uploads               - Skip processing the 'uploads' item in the backup.
+  -sl, --skip-languages             - Skip processing the 'languages' item in the backup.
+  -sd, --skip-dbfile                - Skip processing the database file in the backup.
+  -se, --skip-dropins               - Skip processing the dropins file in the backup.
+  -sf, --skip-file=<string>         - Skip processing items that match the specified string.
+
+  -dm, --dump-metadata              - Display backup metadata from the backup file.
+  -di, --dump-index=<data>          - Display backup index from the backup file. Use 'data' to show additional information.
+  -dh, --dump-header                - Display backup header from the backup file.
+  -do, --dump-options               - Display the command options that have been parsed.
+
+Restore Options:
+  -p,  --path=<path>                - Specify the WordPress root path for restoration. Default: "./".
+  -wd, --overwrite-db=<yes|no>      - Remove tables that are not in the backup. Default: "no".
+  -wr, --overwrite-wproot=<yes|no>  - Remove files in the WordPress root path that are not in the backup or part of WordPress core. Default: "no".
+       --dbinnodb-strict-mode       - Enable InnoDB strict mode if needed. By default, it is turned off during database restoration.
+       --dbfile=<file>              - Use the extracted backup SQL file to resume database restoration in case of failure.
+
+Restore DB Options:
+  This option overrides the DB-related configuration parsed from the wp-config.php file.
+       --dbhost=<string>            - Database Host.
+       --dbname=<string>            - Database Name.
+       --dbuser=<string>            - Database User.
+       --dbpass=<string>            - Database Password.
+       --dbcharset=<string>         - Database charset.
+       --dbcollate=<string>         - Database collate.
+       --dbssl-ca-cert=<file>       - SSL CA file path.
+       --dbssl-cert=<file>          - SSL certificate file path.
+       --dbssl-key=<file>           - SSL key file path.
+       --dbssl-mode=<mode>          - Connects to the database with SSL mode skip-verify or preferred. Default: skip-verify.
 ```
 
 ### Examples
