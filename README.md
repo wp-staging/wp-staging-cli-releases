@@ -1,6 +1,6 @@
 # wp-staging-cli
 
-**wp-staging-cli** is a high-performance command-line tool for processing WP Staging Pro backup files. This tool allows you to extract, normalize, and inspect the contents of `.wpstg` backup files created by the WP Staging Pro plugin.
+**wp-staging-cli** is a high-performance command-line tool for processing WP Staging backup files. This tool allows you to extract, normalize, and inspect the contents of `.wpstg` backup files created by the WP Staging Pro plugin.
 
 This repo contains binary executables that can be used on WinOS, Linux and Mac OS to extract WP Staging backup files. (Requires a valid and active [WP Staging Agency or Developer plan](https://wp-staging.com).)
 
