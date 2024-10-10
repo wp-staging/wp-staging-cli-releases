@@ -4,7 +4,7 @@
 
 This repo contains binary executables that can be used on WinOS, Linux and Mac OS to extract WP Staging backup files. 
 
-**Important:** You can only use this cli tool only with a [WP Staging Agency or Developer license key](https://wp-staging.com).
+**Important:** You can use this cli tool only with a valid [WP Staging Agency or Developer license key](https://wp-staging.com).
 
 **Benchmarks:** 
 - We extracted a 20GB backup in under 36 seconds on an AMD Ryzen™ 7 PRO 7840U with a fast SSD running Ubuntu 20.04.
