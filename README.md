@@ -5,11 +5,12 @@
 This repo contains binary executables that can be used on WinOS, Linux and Mac OS to extract WP Staging backup files. (Requires a valid and active [WP Staging Agency or Developer plan](https://wp-staging.com).)
 
 **Benchmarks:** 
-- Extracting a 20GB backup in under 36s on a AMD Ryzen™ 7 PRO 7840U and fast SSD on Ubuntu 20.04.
+- We extracted a 20GB backup in under 36 seconds on an AMD Ryzen™ 7 PRO 7840U with a fast SSD running Ubuntu 20.04.
 
 ## Features
 
-- **Extract Backup Files and Database**: Access the contents of `.wpstg` backup files.
+- **Restore WordPress when its down**: Start this cli tool and instantly restore WordPress files and database, even when the site is unaccessable and broken.
+- **Extract Backup Files and Database**: Access and extract the entire contents of `.wpstg` backup files without using WordPress.
 - **Database Normalization**: Perform normalization on the database files within the backup.
 - **Metadata Dumping**: Extract metadata from the backup file.
 - **Index and Header Dumping**: Retrieve index and header information from the backup file.
@@ -19,7 +20,7 @@ This repo contains binary executables that can be used on WinOS, Linux and Mac O
 ### Download Pre-Built Binary
 
 1. Download executables for all major operating systems from [here](https://github.com/wp-staging/wp-staging-cli-releases/archive/refs/heads/main.zip).
-2. Extract the zip and get the appropriate binary for your operating system from the `build` folder.
+2. Extract the zip and get the appropriate binary `wp-staging-cli` for your operating system from inside the `build` folder.
 3. Optional: Move the `wp-staging-cli` binary to a directory in your `PATH` for easy access, e.g. for Linux:
 
 ```
@@ -147,7 +148,7 @@ set WPSTGPRO_LICENSE=WPSTGPRO_LICENSE_KEY
 We welcome contributions to wpstg-extractor! If you have suggestions, bug reports, or want to contribute code, please follow the [contributing guidelines.](https://github.com/wp-staging/wp-staging-pro)
 
 ### How to Contribute
-1. Fork the repository.
+1. Fork this repository.
 2. Create a new branch for your feature or bug fix.
 3. Make your changes and test them.
 4. Submit a pull request with a description of your changes.
