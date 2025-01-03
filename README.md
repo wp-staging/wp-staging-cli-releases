@@ -34,13 +34,14 @@ mv wp-staging-cli /usr/local/bin/
 To run wp-staging-cli, use the following command:
 
 ```
-wp-staging-cli [options] <backupfile.wpstg>
+wp-staging-cli [commands] [options] <backupfile.wpstg>
 ```
 
-### Arguments
-- `<backupfile.wpstg>  - Path to the WP Staging backup file that will be processed. This argument is mandatory.`
+* **Commands** must be in the first order. When not specified, "extract" is used by default.
+* **Options** and **Arguments** can be used in any order.
+* **Options** can start with either a single "-" or a double "--".
+* **Options** with values can be set with or without '='.
 
-### Options
 ```
 Commands:
   extract - Extract items from the backup. Default if no command is specified.
@@ -116,10 +117,6 @@ Restore DB Options:
        --dbssl-cert=<file>          - SSL certificate file path.
        --dbssl-key=<file>           - SSL key file path.
        --dbssl-mode=<mode>          - Connects to the database with SSL mode skip-verify or preferred. Default: skip-verify.
-
-Examples:
-  wp-staging-cli extract --license=WPSTGPRO_LICENSE backupfile.wpstg
-  wp-staging-cli restore --license=WPSTGPRO_LICENSE backupfile.wpstg --path=/var/www/site
 ```
 
 ### Examples
