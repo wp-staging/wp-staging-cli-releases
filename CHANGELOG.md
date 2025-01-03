@@ -1,3 +1,13 @@
+## v1.2.0
+
+- Add multisite support.
+- Add a command option to verify the checksum of the extracted file.
+- Fix PHP serialization with indexed arrays.
+- Fix data chunk calculation on compressed backups.
+- Fix extraction when skipping the database file.
+- Fix overwrite during restoration.
+- Fix overwrite on the database and preserve the wp table from deletion.
+
 ## v1.1.0
 
 - Add restore command.
