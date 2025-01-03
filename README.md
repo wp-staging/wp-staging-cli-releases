@@ -52,25 +52,18 @@ Arguments:
 General Options:
   -l,  --license=<licensekey>       - WP Staging Pro License Key. Required to access the backup file.
                                       Alternatively, use the `WPSTGPRO_LICENSE` environment variable.
-
-  -o,  --outputdir=<path>           - Specify the working directory path where processed files will be stored.
-                                      The "wpstg-cli" will be appended to the specified path. Default: "./wpstg-cli".
-
-  -e,  --extractdir=<string>        - Specify the name of the extraction directory. Default: "extract".
-  -s,  --skip-confirm               - Skip confirmation prompt.
-  -w,  --overwrite=<yes|no>         - Overwrite the target directory during `extract` and `restore` operations. Default: "yes".
-  -v,  --version                    - Display version information and exit.
-  -h,  --help=<all>                 - Display this help message and exit. Use 'all' to show additional help.
-  -q,  --quiet                      - Suppress output of processed backup items.
-  -d,  --debug                      - Display debug message.
-       --slowdown-cpu               - Reduce CPU usage during the iteration process.
-       --skip-extract               - Use existing extracted files during the `restore` process.
-
+  -o,  --outputdir=<path>           - Specify the extraction directory path where processed files will be stored. Default: "./wp-staging-cli-output"
   -n,  --normalizedb                - Normalize database files during the `extract` process.
                                       This will replace all WP Staging specific placeholders and allows the sql file to be imported by
                                       any regular db admin tool.
+
+       --workingdir=<path>          - Specify the working directory path where config-related files will be stored. Default: ~/.wp-staging-cli
        --siteurl=<siteurl>          - Specify a new Site URL.
        --dbprefix=<dbprefix>        - Specify a new database prefix.
+       --overwrite=<yes|no>         - Overwrite the target directory during `extract` and `restore` operations. Default: "yes".
+       --verify                     - Verify the integrity of the extracted file.
+       --yes                        - Answer yes to the confirmation prompt.
+       --skip-extract               - Don't extract files and use previously extracted and existing files for `restore` process. For use case, when restore failed, the process can be continued without first extracting all files again.
 
   -or, --only-wproot                - Process only the 'wp root' item in the backup.
   -ow, --only-wpcontent             - Process only the 'wp-content' item in the backup.
@@ -99,6 +92,11 @@ General Options:
   -dh, --dump-header                - Display backup header from the backup file.
   -do, --dump-options               - Display the command options that have been parsed.
 
+  -d,  --debug                      - Display debug message.
+  -q,  --quiet                      - Suppress output of processed backup items.
+  -v,  --version                    - Display version information and exit.
+  -h,  --help                       - Display all help message and exit.
+
 Restore Options:
   -p,  --path=<path>                - Specify the WordPress root path for restoration. Default: "./".
   -wd, --overwrite-db=<yes|no>      - Remove tables that are not in the backup. Default: "no".
@@ -118,20 +116,17 @@ Restore DB Options:
        --dbssl-cert=<file>          - SSL certificate file path.
        --dbssl-key=<file>           - SSL key file path.
        --dbssl-mode=<mode>          - Connects to the database with SSL mode skip-verify or preferred. Default: skip-verify.
+
+Examples:
+  wp-staging-cli extract --license=WPSTGPRO_LICENSE backupfile.wpstg
+  wp-staging-cli restore --license=WPSTGPRO_LICENSE backupfile.wpstg --path=/var/www/site
 ```
 
 ### Examples
 
 ```
-wp-staging-cli --license=WPSTGPRO_LICENSE --outputdir=./wpstgbackup backup.wpstg
-wp-staging-cli --license=WPSTGPRO_LICENSE --normalizedb --dbprefix=newprefix --siteurl=https://example.com backup.wpstg
-```
-
-With short options:
-
-```
-wp-staging-cli -l WPSTGPRO_LICENSE -o ./wpstgbackup backup.wpstg
-wp-staging-cli -l WPSTGPRO_LICENSE -n -dp newprefix -su https://example.com backup.wpstg
+wp-staging-cli extract --license=WPSTGPRO_LICENSE backupfile.wpstg
+wp-staging-cli restore --license=WPSTGPRO_LICENSE backupfile.wpstg --path=/var/www/site
 ```
 
 You may add the license key by using environment variable:
@@ -147,18 +142,13 @@ set WPSTGPRO_LICENSE=WPSTGPRO_LICENSE_KEY
 ```
 
 ## Contributing
-We welcome contributions to wpstg-extractor! If you have suggestions, bug reports, or want to contribute code, please follow the [contributing guidelines.](https://github.com/wp-staging/wp-staging-pro)
+We welcome contributions to wp-staging-cli! Currently, we only accept bug reports and suggestions.
 
 ### How to Contribute
-1. Fork this repository.
-2. Create a new branch for your feature or bug fix.
-3. Make your changes and test them.
-4. Submit a pull request with a description of your changes.
+- If you have a bug report or suggestion, please open an [issue on the repository](https://github.com/wp-staging/wp-staging-cli-releases/issues).
+- Pre-built binaries are available, and source contributions are currently not accepted.
+- Review open issues before submitting to avoid duplicates.
 
 ## Acknowledgements
 - [WP Staging Pro](https://wp-staging.com/) The Best WordPress Backup and Migration Plugin
 - [Go Programming Language](https://go.dev/) The core language for this tool.
-
-## Contact
-For support or questions, please open an issue on the [GitHub repository](https://github.com/wp-staging/wp-staging-cli).
-
