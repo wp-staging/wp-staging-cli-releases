@@ -46,6 +46,7 @@ wp-staging-cli [commands] [options] <backupfile.wpstg>
 Commands:
   extract - Extract items from the backup. Default if no command is specified.
   restore - Restore the backup file.
+  help    - Display all help message.
 
 Arguments:
   backupfile.wpstg  - Path to the WP Staging backup file that will be processed. This argument is mandatory.
@@ -60,11 +61,13 @@ General Options:
 
        --workingdir=<path>          - Specify the working directory path where config-related files will be stored. Default: ~/.wp-staging-cli
        --siteurl=<siteurl>          - Specify a new Site URL.
-       --dbprefix=<dbprefix>        - Specify a new database prefix.
+       --db-prefix=<prefix>         - Specify a new database table prefix.
        --overwrite=<yes|no>         - Overwrite the target directory during `extract` and `restore` operations. Default: "yes".
        --verify                     - Verify the integrity of the extracted file.
-       --yes                        - Answer yes to the confirmation prompt.
-       --skip-extract               - Don't extract files and use previously extracted and existing files for `restore` process. For use case, when restore failed, the process can be continued without first extracting all files again.
+       --yes                        - Automatically answers "yes" to confirmation prompts.
+       --confirm-timeout=<num>      - Timeout duration (in seconds) for awaiting a "yes" response at confirmation prompts. Default: 30 seconds.
+       --skip-extract               - Don't extract files and use previously extracted and existing files for `restore` process.
+                                      For use case, when restore failed, the process can be continued without first extracting all files again.
 
   -or, --only-wproot                - Process only the 'wp root' item in the backup.
   -ow, --only-wpcontent             - Process only the 'wp-content' item in the backup.
@@ -95,28 +98,30 @@ General Options:
 
   -d,  --debug                      - Display debug message.
   -q,  --quiet                      - Suppress output of processed backup items.
-  -v,  --version                    - Display version information and exit.
-  -h,  --help                       - Display all help message and exit.
+  -v,  --version                    - Display version information.
+  -h,  --help                       - Display all help message.
 
 Restore Options:
   -p,  --path=<path>                - Specify the WordPress root path for restoration. Default: "./".
   -wd, --overwrite-db=<yes|no>      - Remove tables that are not in the backup. Default: "no".
   -wr, --overwrite-wproot=<yes|no>  - Remove files in the WordPress root path that are not in the backup or part of WordPress core. Default: "no".
-       --dbinnodb-strict-mode       - Enable InnoDB strict mode if needed. By default, it is turned off during database restoration.
-       --dbfile=<file>              - Use the extracted backup SQL file to resume database restoration in case of failure.
+       --db-innodb-strict-mode      - Enable InnoDB strict mode if needed. By default, it is turned off during database restoration.
+       --db-file=<file>             - Use the extracted backup SQL file to resume database restoration in case of failure.
+       --db-insert-batch-size=<num> - Number of queries to batch in a single insert operation. Default: 1000.
 
 Restore DB Options:
   This option overrides the DB-related configuration parsed from the wp-config.php file.
-       --dbhost=<string>            - Database Host.
-       --dbname=<string>            - Database Name.
-       --dbuser=<string>            - Database User.
-       --dbpass=<string>            - Database Password.
-       --dbcharset=<string>         - Database charset.
-       --dbcollate=<string>         - Database collate.
-       --dbssl-ca-cert=<file>       - SSL CA file path.
-       --dbssl-cert=<file>          - SSL certificate file path.
-       --dbssl-key=<file>           - SSL key file path.
-       --dbssl-mode=<mode>          - Connects to the database with SSL mode skip-verify or preferred. Default: skip-verify.
+       --db-host=<string>           - Database Host.
+       --db-name=<string>           - Database Name.
+       --db-user=<string>           - Database User.
+       --db-pass=<string>           - Database Password.
+       --db-socket=<file>           - MySQL socket file path.
+       --db-charset=<string>        - Database charset.
+       --db-collate=<string>        - Database collate.
+       --db-ssl-ca-cert=<file>      - SSL CA file path.
+       --db-ssl-cert=<file>         - SSL certificate file path.
+       --db-ssl-key=<file>          - SSL key file path.
+       --db-ssl-mode=<mode>         - Connects to the database with SSL mode "skip-verify" or "preferred". Default: "skip-verify".
 ```
 
 ### Examples
