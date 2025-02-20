@@ -1,3 +1,11 @@
+## v1.2.2
+
+- Add support for mysql socket.
+- Add options to adjust batch in a single insert operation.
+- Fix parse MySQL Socket from wp-config.php DB_HOST constant.
+- Fix restoration only the database file in the backup.
+- Fix to avoid running as root by default.
+
 ## v1.2.0
 
 - Add multisite support.
