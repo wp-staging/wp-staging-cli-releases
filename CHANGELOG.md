@@ -1,3 +1,9 @@
+## v1.2.3
+
+- Add to load command options from configuration file.
+- Fix restore view tables.
+- Fix continue on restore while having invalid backup index entry
+
 ## v1.2.2
 
 - Add support for mysql socket.
@@ -5,6 +11,10 @@
 - Fix parse MySQL Socket from wp-config.php DB_HOST constant.
 - Fix restoration only the database file in the backup.
 - Fix to avoid running as root by default.
+
+## v1.2.1
+
+- Internal release addressing various bug fixes.
 
 ## v1.2.0
 
