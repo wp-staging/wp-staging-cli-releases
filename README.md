@@ -54,12 +54,13 @@ Arguments:
 General Options:
   -l,  --license=<licensekey>       - WP Staging Pro License Key. Required to access the backup file.
                                       Alternatively, use the `WPSTGPRO_LICENSE` environment variable.
-  -o,  --outputdir=<path>           - Specify the extraction directory path where processed files will be stored. Default: "./wp-staging-cli-output"
+  -o,  --outputdir=<path>           - Specify the extraction directory path where processed files will be stored. Default: "./wp-staging-cli-output".
   -n,  --normalizedb                - Normalize database files during the `extract` process.
                                       This will replace all WP Staging specific placeholders and allows the sql file to be imported by
                                       any regular db admin tool.
 
-       --workingdir=<path>          - Specify the working directory path where config-related files will be stored. Default: ~/.wp-staging-cli
+       --workingdir=<path>          - Specify the working directory path where config-related files will be stored. Default: "~/.wp-staging-cli".
+       --skip-config                - Don't reads command options from the configuration file located at "~/.wp-staging-cli/wp-staging-cli.conf".
        --siteurl=<siteurl>          - Specify a new Site URL.
        --db-prefix=<prefix>         - Specify a new database table prefix.
        --overwrite=<yes|no>         - Overwrite the target directory during `extract` and `restore` operations. Default: "yes".
@@ -103,7 +104,7 @@ General Options:
 
 Restore Options:
   -p,  --path=<path>                - Specify the WordPress root path for restoration. Default: "./".
-  -wd, --overwrite-db=<yes|no>      - Remove tables that are not in the backup. Default: "no".
+  -wd, --overwrite-db=<yes|no>      - Remove tables that are not in the backup. Default: "yes".
   -wr, --overwrite-wproot=<yes|no>  - Remove files in the WordPress root path that are not in the backup or part of WordPress core. Default: "no".
        --db-innodb-strict-mode      - Enable InnoDB strict mode if needed. By default, it is turned off during database restoration.
        --db-file=<file>             - Use the extracted backup SQL file to resume database restoration in case of failure.
@@ -141,6 +142,16 @@ At Windows OS command prompt
 
 ```
 set WPSTGPRO_LICENSE=WPSTGPRO_LICENSE_KEY
+```
+
+#### Config File
+
+By default, wp-staging-cli reads command options from the configuration file located at `~/.wp-staging-cli/wp-staging-cli.conf`.
+
+```
+# File: ~/.wp-staging-cli/wp-stagin-cli.conf
+--license=WPSTGPRO_LICENSE
+--path=/path-to-restore
 ```
 
 ## Contributing
