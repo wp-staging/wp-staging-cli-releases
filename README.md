@@ -104,11 +104,12 @@ General Options:
 
 Restore Options:
   -p,  --path=<path>                - Specify the WordPress root path for restoration. Default: "./".
-  -wd, --overwrite-db=<yes|no>      - Remove tables that are not in the backup. Default: "yes".
+  -wd, --overwrite-db=<yes|no>      - Remove database tables not present in the backup. Default: "yes".
   -wr, --overwrite-wproot=<yes|no>  - Remove files in the WordPress root path that are not in the backup or part of WordPress core. Default: "no".
        --db-innodb-strict-mode      - Enable InnoDB strict mode if needed. By default, it is turned off during database restoration.
        --db-file=<file>             - Use the extracted backup SQL file to resume database restoration in case of failure.
        --db-insert-batch-size=<num> - Number of queries to batch in a single insert operation. Default: 1000.
+       --db-insert-multi=<yes|no>   - Use multi-row INSERT statements per query to improve performance. Default "yes".
 
 Restore DB Options:
   This option overrides the DB-related configuration parsed from the wp-config.php file.
@@ -149,7 +150,7 @@ set WPSTGPRO_LICENSE=WPSTGPRO_LICENSE_KEY
 By default, wp-staging-cli reads command options from the configuration file located at `~/.wp-staging-cli/wp-staging-cli.conf`.
 
 ```
-# File: ~/.wp-staging-cli/wp-stagin-cli.conf
+# File: ~/.wp-staging-cli/wp-staging-cli.conf
 --license=WPSTGPRO_LICENSE
 --path=/path-to-restore
 ```

@@ -1,8 +1,12 @@
+## v1.3.0
+
+- Add multi-row INSERT option to DB restore.
+
 ## v1.2.3
 
 - Add to load command options from configuration file.
 - Fix restore view tables.
-- Fix continue on restore while having invalid backup index entry
+- Fix continue on restore while having invalid backup index entry.
 
 ## v1.2.2
 
