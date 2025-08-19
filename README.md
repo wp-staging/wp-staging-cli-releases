@@ -183,7 +183,7 @@ wp-staging-cli restore --license=WPSTGPRO_LICENSE --path=/var/www/site \
   --db-name=dbname --db-user=user --db-pass=pass --db-host=host backupfile.wpstg
 ```
 
-Run `wp-staging-help help` for details.
+Run `wp-staging-cli help` for details.
 
 #### Dumping Backup Index:
 
