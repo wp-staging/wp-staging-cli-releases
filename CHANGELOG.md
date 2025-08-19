@@ -1,3 +1,9 @@
+## v1.3.1
+
+- Fix command arguments not being parsed correctly.
+- Fix only-* filter use more than one.
+- Fix file locking on Windows OS.
+
 ## v1.3.0
 
 - Add multi-row INSERT option to DB restore.
