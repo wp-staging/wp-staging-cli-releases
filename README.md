@@ -38,7 +38,7 @@ wp-staging-cli [commands] [options] <backupfile.wpstg>
 ```
 
 * **Commands** must be in the first order. When not specified, "extract" is used by default.
-* **Options** and **Arguments** can be used in any order.
+* **Options** and **backupfile.wpstg** can be used in any order.
 * **Options** can start with either a single "-" or a double "--".
 * **Options** with values can be set with or without '='.
 
@@ -128,19 +128,27 @@ Restore DB Options:
 
 ### Examples
 
+#### Basic usage:
 ```
 wp-staging-cli extract --license=WPSTGPRO_LICENSE backupfile.wpstg
-wp-staging-cli restore --license=WPSTGPRO_LICENSE backupfile.wpstg --path=/var/www/site
+wp-staging-cli restore --license=WPSTGPRO_LICENSE --path=/var/www/site backupfile.wpstg
 ```
 
-You may add the license key by using environment variable:
+The `--path` options is not required if this program is executed from the WP root directory.
+```
+cd path-to-wp-site
+wp-staging-cli restore --license=WPSTGPRO_LICENSE backupfile.wpstg
+```
+
+You may add the license key by using environment variable.
+
+On Unix-based systems:
 
 ```
 export WPSTGPRO_LICENSE=WPSTGPRO_LICENSE_KEY
 ```
 
-At Windows OS command prompt
-
+On Windows command prompt:
 ```
 set WPSTGPRO_LICENSE=WPSTGPRO_LICENSE_KEY
 ```
@@ -155,6 +163,67 @@ By default, wp-staging-cli reads command options from the configuration file loc
 --path=/path-to-restore
 ```
 
+#### Extract with normalize DB file:
+
+```
+wp-staging-cli extract --license=WPSTGPRO_LICENSE --normalizedb backupfile.wpstg
+```
+
+Extract with normalize DB file, set new site URL and DB prefix:
+
+```
+wp-staging-cli extract --license=WPSTGPRO_LICENSE --normalizedb \
+  --siteurl=https://currentsite.tld --db-prefix=wpsite backupfile.wpstg
+```
+
+#### Restore to external DB
+
+```
+wp-staging-cli restore --license=WPSTGPRO_LICENSE --path=/var/www/site \
+  --db-name=dbname --db-user=user --db-pass=pass --db-host=host backupfile.wpstg
+```
+
+Run `wp-staging-cli help` for details.
+
+#### Dumping Backup Index:
+
+With raw format:
+```
+wp-staging-cli extract --license=WPSTGPRO_LICENSE --dump-index backupfile.wpstg
+```
+
+With additional information:
+```
+wp-staging-cli extract --license=WPSTGPRO_LICENSE --dump-index=data backupfile.wpstg
+```
+
+With additional information for specific files:
+```
+wp-staging-cli extract --license=WPSTGPRO_LICENSE --dump-index=data \
+  --only-file=twentytwentyfour/theme.json backupfile.wpstg
+```
+
+Example output:
+```
+IndexItem        : 14d300000000ac17fc66c2434c72df0d00000001570000000100190000000a0000000000wpstg_t_twentytwentyfour/theme.json
+PathIdentifier   : wpstg_t_twentytwentyfour/theme.json
+PartIdentifier   : wpstg_t_ (wp-content/themes/)
+FilePath         : wp-content/themes/twentytwentyfour/theme.json
+StartByte        : 54144
+FileSize         : 3551 (3.47 KB)
+Compressed       : Yes
+ItemHeader       : 14d300000000ac17fc66c2434c72df0d00000001570000000100190000000a0000000000
+StartOffset      : 54036
+ModifiedTime     : 1727797164 (10-01-2024 23:39:24)
+CRC32Checksum    : 1917600706
+CompressedSize   : 3551 (3.47 KB)
+UncompressedSize : 22273 (21.75 KB)
+Attributes       : 1
+FilePathLength   : 25
+FileNameLength   : 10
+ExtraFieldLength : 0
+```
+
 ## Contributing
 We welcome contributions to wp-staging-cli! Currently, we only accept bug reports and suggestions.
 
@@ -166,3 +235,4 @@ We welcome contributions to wp-staging-cli! Currently, we only accept bug report
 ## Acknowledgements
 - [WP Staging Pro](https://wp-staging.com/) The Best WordPress Backup and Migration Plugin
 - [Go Programming Language](https://go.dev/) The core language for this tool.
+- [bashunit](https://github.com/TypedDevs/bashunit) A testing framework used for end-to-end testing of this tool.
